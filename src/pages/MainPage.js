@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Header, SocialIcon, PricingCard   } from 'react-native-elements';
 import { Button } from 'native-base';
-import { StackNavigator } from 'react-navigation';
+import { DrawerNavigator  } from 'react-navigation';
+import LoginPage from './LoginPage';
+//import MainPage from './MainPage';
 export default class MainPage extends React.Component {
 
   render() {
@@ -14,19 +16,17 @@ export default class MainPage extends React.Component {
               centerComponent={{ text: 'Glory', style: { color: '#fff' } }}
               rightComponent={{ icon: 'home', color: '#fff' }}
         />
-        <ScrollView>
-        <PricingCard
-        color='#4f9deb'
-        title='Free'
-        price='$0'
-        info={['1 User', 'Basic Support', 'All Core Features']}
-        button={{ title: 'GET STARTED', icon: 'flight-takeoff' }}
-      />
-      </ScrollView>
+        <MyApp />
             </View>
           );
         }
       }
+
+const MyApp = DrawerNavigator({
+        Login: {
+          screen: LoginPage
+        }
+      })
 
 const styles = StyleSheet.create({
   container: {

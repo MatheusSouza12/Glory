@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as firebase from 'firebase';
 import { Container, Content, Header, Form, Input, Item, Button, Label} from 'native-base';
+import { SocialIcon } from 'react-native-elements';
 
 var firebaseConfig = {
     apiKey: "AIzaSyDLnRxbX4kJQvB4oyY5sM-A3P2L25xCttg",
@@ -54,7 +55,8 @@ export default class LoginPage extends React.Component {
     loginUser = (email, senha) =>{
       try{
         firebase.auth().signInWithEmailAndPassword(email, senha).then(function (user) {
-            console.log(user)
+            //navigation.navigate('MainPage')
+            
   
         })
       }
@@ -111,10 +113,16 @@ export default class LoginPage extends React.Component {
                   <Button style={{ marginTop: 10 }}
                          full 
                          primary
-                         onPress={() => this.signUpUser(this.state.email, this.state.senha)}
+                         onPress={() => this.props.navigation.navigate('Cadastro')}
                     >
                     <Text style={{ color: 'white'}}> Cadastre-se </Text>
                   </Button>
+                  <SocialIcon
+                            title='Sign In With Facebook'
+                            button
+                            type='facebook'
+                            onPress={() => this.props.navigation.navigate('MainPage')}
+                    />
                 </Form>
             </Container>
         );
